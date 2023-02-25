@@ -96,7 +96,7 @@ Details can be found in [2.2.STREAM_scATAC-seq_k-mers.ipynb](https://github.com/
 $ bash TE_ATAC_rate.sh
 ```
 
-- Enrichment scores of the transcription factor ChIP peaks / Enrichment scores of the accessible motifs (Figure 5) 
+- Enrichment scores of the transcription factor ChIP peaks / Enrichment scores of the accessible motifs (Figure 5a) 
 ```
 $ bash ESscore_TE_TF_neural_teleng.sh
 ```
@@ -106,19 +106,19 @@ $ bash ESscore_TE_TF_neural_teleng.sh
 $ bash ESscore_TE_TF_neural_teleng_control.sh
 ```
 
--  TE deviation z-scores per cell based on the overlap of scATAC-seq peaks in the TE region with chromVAR (Figure 5, S8)
+-  TE deviation z-scores per cell based on the overlap of scATAC-seq peaks in the TE region with chromVAR (Figure 5b,c,d)
 ```
 $ r chromVAR_TE.r
 ```
 
 ### Section 2.4 
 
-- Distribution of transcription factor ChIP-seq reads mapped from the genome to consensus TE sequences (Figure 6a,b) 
+- Distribution of transcription factor ChIP-seq reads mapped from the genome to consensus TE sequences (Figure 6b,c) 
 ```
 $ bash Freq_score_TEdis.sh
 ```
 
--  Distribution of the detection sites of accessible de novo motifs mapped from the genome to consensus TE sequences (Figure 6c) 
+-  Distribution of the detection sites of accessible de novo motifs mapped from the genome to consensus TE sequences (Figure 6d) 
 ```
 $ bash Freq_score_TEdis_chromVAR.sh
 $ Freq_score_TEdis_vis.py -tf (TF name) -te (TE name) -tfm (de novo motif number) # visualization
@@ -132,7 +132,7 @@ $ bash deeptools.sh
 
 ### Section 2.5
 
-- Sequence conservation of the accessible motifs within TEs among mammals (Figure S15)
+- Sequence conservation of the accessible motifs within TEs among mammals (Figure S13)
 ```
 $ bash phyloP_socre_TE_motif.sh
 ```
