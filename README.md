@@ -91,7 +91,7 @@ Details can be found in [2.2.STREAM_scATAC-seq_k-mers.ipynb](https://github.com/
 
 ### Section 2.3
 
-- Distribution of the percentage of ATAC peaks that overlap with TEs for each cell belonging to the cell type (Figure 4)
+- Distribution of the percentage of ATAC peaks that overlap with TEs for each cell belonging to the cell type (Figure 4a,b)
 ```
 $ bash TE_ATAC_rate.sh
 ```
