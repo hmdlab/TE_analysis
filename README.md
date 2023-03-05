@@ -113,12 +113,12 @@ $ r chromVAR_TE.r
 
 ### Section 2.4 
 
-- Distribution of transcription factor ChIP-seq reads mapped from the genome to consensus TE sequences (Figure 6b,c) 
+- Distribution of transcription factor ChIP-seq reads mapped from the genome to consensus TE sequences (Figure 6b,c, S11) 
 ```
 $ bash Freq_score_TEdis.sh
 ```
 
--  Distribution of the detection sites of accessible de novo motifs mapped from the genome to consensus TE sequences (Figure 6d) 
+-  Distribution of the detection sites of accessible de novo motifs mapped from the genome to consensus TE sequences (Figure 6d, S11) 
 ```
 $ bash Freq_score_TEdis_chromVAR.sh
 $ Freq_score_TEdis_vis.py -tf (TF name) -te (TE name) -tfm (de novo motif number) # visualization
