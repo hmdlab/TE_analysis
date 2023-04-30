@@ -1,6 +1,8 @@
 # TE_analysis
 for "Transposons contribute to the acquisition of cell type-specific cis-elements in the brain"
 
+[![DOI](https://zenodo.org/badge/606271716.svg)](https://zenodo.org/badge/latestdoi/606271716)
+
 data source(scATAC-seq): https://atlas.gs.washington.edu/mouse-atac/
 
 ### Prepare
