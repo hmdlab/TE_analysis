@@ -20,24 +20,28 @@ with open('data/data_3_bigdata_mm9_onlyTE.bed') as f:
     TE = [row for row in reader]
                                                      
 
-cl=['LINE','SINE','LTR','DNA','Unknown']
 g_reg=[0,0,0,0,0]
 j=0
-for j in range(len(cl)):
-    tereg=[]
-    for i in range(len(TE)):
-        if TE[i][-1].split('/')[0]==str(cl[j]):
-            tereg.append([TE[i][0],int(TE[i][1]),int(TE[i][2])])
-    with open('out/TE_merge_'+str(cl[j])+'.bed','w') as file:
+refcl=['LINE','SINE','LTR','DNA','the_others']
+cl=[[],[],[],[],[]]
+ans=[0,0,0,0,0]
+for i in range(len(ATAC)):
+    if refcl.count(ATAC[i][-1].split('/')[0])>0:
+        cl[refcl.index(ATAC[i][-1].split('/')[0])].append([ATAC[i][0],int(ATAC[i][1]),int(ATAC[i][2])])
+    else:
+        cl[4].append([ATAC[i][0],int(ATAC[i][1]),int(ATAC[i][2])])
+for j in range(len(refcl)):
+    with open('out/TE_test_merge_'+str(refcl[j])+'.bed','w') as file:
         writer = csv.writer(file,delimiter='\t')
-        writer.writerows(tereg)
-a = pybedtools.example_bedtool('out/TE_merge_'+str(cl[j])+'.bed')
-b=a.sort()
-c = b.merge()
-reg=0
-for i in range(len(c)):
-    reg+=c[i].end-c[i].start
-g_reg[j]=reg
+        writer.writerows(cl[j])
+        
+    a = pybedtools.example_bedtool('out/TE_merge_'+str(cl[j])+'.bed')
+    b=a.sort()
+    c = b.merge()
+    reg=0
+    for i in range(len(c)):
+        reg+=c[i].end-c[i].start
+    g_reg[j]=reg
 
 
 
