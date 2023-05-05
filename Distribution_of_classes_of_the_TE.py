@@ -18,19 +18,7 @@ import pybedtools
 with open('data/data_3_bigdata_mm9_onlyTE.bed') as f:
     reader = csv.reader(f, delimiter='\t')
     TE = [row for row in reader]
-    
-#reg=[0,0,0,0,0]
-#for i in range(len(TE)):
- #   if TE[i][-1].split('/')[0]=='LINE':
-  #      reg[0]+=int(TE[i][2])-int(TE[i][1])
-  #  elif TE[i][-1].split('/')[0]=='SINE':
-   #     reg[1]+=int(TE[i][2])-int(TE[i][1])
-   # elif TE[i][-1].split('/')[0]=='LTR':
-    #    reg[2]+=int(TE[i][2])-int(TE[i][1])
-    #elif TE[i][-1].split('/')[0]=='DNA':
-     #   reg[3]+=int(TE[i][2])-int(TE[i][1])
-    #else:
-     #   reg[4]+=int(TE[i][2])-int(TE[i][1])                                                    
+                                                     
 
 cl=['LINE','SINE','LTR','DNA','Unknown']
 g_reg=[0,0,0,0,0]
@@ -55,54 +43,60 @@ g_reg[j]=reg
 
 ## ChIP-seq peak
 
-cl=['LINE','SINE','LTR','DNA','Unknown']
+with open('out/TF_chipatlas_Neurod2_merge_TE.bed') as f:
+    reader = csv.reader(f, delimiter='\t')
+    TEATAC = [row for row in reader]
+
+refcl=['LINE','SINE','LTR','DNA','the_others']
+cl=[[],[],[],[],[]]
 ans=[0,0,0,0,0]
-for j in range(len(cl)):
-    with open('out/TF_chipatlas_Neurod2_merge_TE.bed') as f:
-        reader = csv.reader(f, delimiter='\t')
-        TEATAC = [row for row in reader]
-    tereg=[]
-    for i in range(len(TEATAC)):
-        if TEATAC[i][-1].split('/')[0]==str(cl[j]):
-            tereg.append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
-    with open('out/TF_chipatlas_Neurod2_merge_'+str(cl[j])+'.bed','w') as file:#TF_chipatlas_alltissue_Tbr1.bed:Chip-atlasから取得
+for i in range(len(TEATAC)):
+    if refcl.count(TEATAC[i][-1].split('/')[0])>0:
+        cl[refcl.index(TEATAC[i][-1].split('/')[0])].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
+    else:
+        cl[4].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
+
+for j in range(len(refcl)):
+    with open('out/TF_chipatlas_Neurod2_merge_'+str(refcl[j])+'.bed','w') as file:
         writer = csv.writer(file,delimiter='\t')
-        writer.writerows(tereg)
-    a = pybedtools.example_bedtool('out/TF_chipatlas_Neurod2_merge_'+str(cl[j])+'.bed')
+        writer.writerows(cl[j])
+    a = pybedtools.example_bedtool('out/TF_chipatlas_Neurod2_merge_'+str(refcl[j])+'.bed')
     b=a.sort()
     c = b.merge()
     reg=0
     for i in range(len(c)):
         reg+=c[i].end-c[i].start
     ans[j]=reg
-
 de1reg=ans
 
 
 
 
 
-cl=['LINE','SINE','LTR','DNA','Unknown']
+with open('out/TF_chipatlas_Lhx2_merge_TE.bed') as f:
+    reader = csv.reader(f, delimiter='\t')
+    TEATAC = [row for row in reader]
+
+refcl=['LINE','SINE','LTR','DNA','the_others']
+cl=[[],[],[],[],[]]
 ans=[0,0,0,0,0]
-for j in range(len(cl)):
-    with open('out/TF_chipatlas_Lhx2_merge_TE.bed') as f:
-        reader = csv.reader(f, delimiter='\t')
-        TEATAC = [row for row in reader]
-    tereg=[]
-    for i in range(len(TEATAC)):
-        if TEATAC[i][-1].split('/')[0]==str(cl[j]):
-            tereg.append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
-    with open('out/TF_chipatlas_Lhx2_merge_'+str(cl[j])+'.bed','w') as file:#TF_chipatlas_alltissue_Tbr1.bed:Chip-atlasから取得
+for i in range(len(TEATAC)):
+    if refcl.count(TEATAC[i][-1].split('/')[0])>0:
+        cl[refcl.index(TEATAC[i][-1].split('/')[0])].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
+    else:
+        cl[4].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
+
+for j in range(len(refcl)):
+    with open('out/TF_chipatlas_Lhx2_merge_'+str(refcl[j])+'.bed','w') as file:
         writer = csv.writer(file,delimiter='\t')
-        writer.writerows(tereg)
-    a = pybedtools.example_bedtool('out/TF_chipatlas_Lhx2_merge_'+str(cl[j])+'.bed')
+        writer.writerows(cl[j])
+    a = pybedtools.example_bedtool('out/TF_chipatlas_Lhx2_merge_'+str(refcl[j])+'.bed')
     b=a.sort()
     c = b.merge()
     reg=0
     for i in range(len(c)):
         reg+=c[i].end-c[i].start
     ans[j]=reg
-
 de3reg=ans
 
 
