@@ -70,7 +70,7 @@ $ python3 TE_bedmake.py
 | ------ | ---- | ---- |
 | chr1 | 100 | 200 | 
 
-### Section 2.1
+### De novo motifs with high variability in chromatin accessibility across cells are similar to known binding motifs of neural differentiation-related transcription factors.
 
 - Visualization of cell similarity using t-SNE based on 7-mer chromatin accessibility with chromVAR (Figure 2a)
 - Visualization of the accessibility of the seed k-mer used to generate the de novo motif with chromVAR (Figure 2b)
@@ -87,11 +87,11 @@ $ cd ..
 $ r seurat_scRNA_scATAC.r
 ```
 
-### Section 2.2
+### Each Neurod2 and Lhx2-like motifs is accessible in a putative neuronal progenitor cell population in the adult brain.
 
 Details can be found in [2.2.STREAM_scATAC-seq_k-mers.ipynb](https://github.com/pinellolab/STREAM/blob/master/tutorial/2.2.STREAM_scATAC-seq_k-mers.ipynb) (Figure 3) 
 
-### Section 2.3
+### Specific TE subfamilies are enriched in the accessible de novo motifs and transcription factor binding sites.
 
 - Distribution of the percentage of ATAC peaks that overlap with TEs for each cell belonging to the cell type (Figure 4)
 ```
@@ -113,7 +113,7 @@ $ bash ESscore_TE_TF_neural_teleng_control.sh
 $ r chromVAR_TE.r
 ```
 
-### Section 2.4 
+### Specific TEs, including MER130 and MamRep434, can function as important cis-elements of neuronal development genes.
 
 - Distribution of transcription factor ChIP-seq reads mapped from the genome to consensus TE sequences (Figure 6b,c, S11) 
 ```
@@ -132,7 +132,7 @@ $ Freq_score_TEdis_vis.py -tf (TF name) -te (TE name) -tfm (de novo motif number
 $ bash deeptools.sh
 ```
 
-### Section 2.5
+### MER130 and MamRep434-derived cis-elements may contribute to brain evolution.
 
 - Sequence conservation of the accessible motifs within TEs among mammals (Figure S13)
 ```
