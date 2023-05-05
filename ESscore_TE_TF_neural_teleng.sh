@@ -16,8 +16,6 @@ bedtools intersect -a data/data_3_bigdata_mm9_onlyTE.bed -b data/TF_chipatlas_Ne
 python3 ESscore_TE_TF_neural_teleng.py -tf Neurod2 -pm p
 python3 ESscore_TE_TF_neural_teleng.py -tf denovo_1 -pm m
 
-bedtools intersect -a data/data_3_bigdata_mm9_onlyTE.bed -b data/TF_chipatlas_Gli2_merge.bed -wa -wb > data/TE_contain_Gli2_peak_neural_merge.bed
-python3 ESscore_TE_TF_neural_teleng.py -tf Gli2 -pm p
 python3 ESscore_TE_TF_neural_teleng.py -tf denovo_2 -pm m
 
 bedtools intersect -a data/data_3_bigdata_mm9_onlyTE.bed -b data/TF_chipatlas_Lhx2_merge.bed -wa -wb > data/TE_contain_Lhx2_peak_neural_merge.bed
