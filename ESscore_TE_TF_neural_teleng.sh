@@ -9,9 +9,6 @@ cat out/merged_cortex_500bp_pre.txt  | cut -f 2,3,4 > out/merged_cortex_500bp.tx
 bedtools intersect -a out/denovo_1_motif_pos.txt -b out/merged_cortex_500bp.txt -wa -wb > out/denovo_1_motif_pos_ATAC_merge.bed
 bedtools intersect -a out/denovo_2_motif_pos.txt -b out/merged_cortex_500bp.txt -wa -wb > out/denovo_2_motif_pos_ATAC_merge.bed
 bedtools intersect -a out/denovo_3_motif_pos.txt -b out/merged_cortex_500bp.txt -wa -wb > out/denovo_3_motif_pos_ATAC_merge.bed
-bedtools intersect -a out/denovo_1_motif_pos_ATAC_merge.bed -b data/data_3_bigdata_mm9_onlyTE.bed -wa -wb > out/denovo_1_motif_pos_TEsubfamily_ATAC.bedd
-bedtools intersect -a out/denovo_2_motif_pos_ATAC_merge.bed -b data/data_3_bigdata_mm9_onlyTE.bed -wa -wb > out/denovo_2_motif_pos_TEsubfamily_ATAC.bedd
-bedtools intersect -a out/denovo_3_motif_pos_ATAC_merge.bed -b data/data_3_bigdata_mm9_onlyTE.bed -wa -wb > out/denovo_3_motif_pos_TEsubfamily_ATAC.bedd
 
 # calculate
 bedtools intersect -a data/data_3_bigdata_mm9_onlyTE.bed -b data/TF_chipatlas_Neurod2_merge.bed -wa -wb > data/TE_contain_Neurod2_peak_neural_merge.bed
