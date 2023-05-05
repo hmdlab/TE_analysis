@@ -47,7 +47,7 @@ for j in range(len(refcl)):
 
 ## ChIP-seq peak
 
-with open('out/TF_chipatlas_Neurod2_merge_TE.bed') as f:
+with open('data/TE_contain_Neurod2_peak_neural_merge.bed') as f:
     reader = csv.reader(f, delimiter='\t')
     TEATAC = [row for row in reader]
 
@@ -55,10 +55,10 @@ refcl=['LINE','SINE','LTR','DNA','the_others']
 cl=[[],[],[],[],[]]
 ans=[0,0,0,0,0]
 for i in range(len(TEATAC)):
-    if refcl.count(TEATAC[i][-1].split('/')[0])>0:
-        cl[refcl.index(TEATAC[i][-1].split('/')[0])].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
+    if refcl.count(TEATAC[i][-4].split('/')[0])>0:
+        cl[refcl.index(TEATAC[i][-4].split('/')[0])].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][6])),min(int(TEATAC[i][2]),int(TEATAC[i][7]))])
     else:
-        cl[4].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
+        cl[4].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][6])),min(int(TEATAC[i][2]),int(TEATAC[i][7]))])
 
 for j in range(len(refcl)):
     with open('out/TF_chipatlas_Neurod2_merge_'+str(refcl[j])+'.bed','w') as file:
@@ -77,7 +77,7 @@ de1reg=ans
 
 
 
-with open('out/TF_chipatlas_Lhx2_merge_TE.bed') as f:
+with open('data/TE_contain_Lhx2_peak_neural_merge.bed') as f:
     reader = csv.reader(f, delimiter='\t')
     TEATAC = [row for row in reader]
 
@@ -85,10 +85,10 @@ refcl=['LINE','SINE','LTR','DNA','the_others']
 cl=[[],[],[],[],[]]
 ans=[0,0,0,0,0]
 for i in range(len(TEATAC)):
-    if refcl.count(TEATAC[i][-1].split('/')[0])>0:
-        cl[refcl.index(TEATAC[i][-1].split('/')[0])].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
+    if refcl.count(TEATAC[i][-4].split('/')[0])>0:
+        cl[refcl.index(TEATAC[i][-4].split('/')[0])].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][6])),min(int(TEATAC[i][2]),int(TEATAC[i][7]))])
     else:
-        cl[4].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
+        cl[4].append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][6])),min(int(TEATAC[i][2]),int(TEATAC[i][7]))])
 
 for j in range(len(refcl)):
     with open('out/TF_chipatlas_Lhx2_merge_'+str(refcl[j])+'.bed','w') as file:
