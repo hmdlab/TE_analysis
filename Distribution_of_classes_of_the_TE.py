@@ -15,7 +15,7 @@ import scipy.stats as st
 from pybedtools import BedTool
 import pybedtools
 
-with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/data_3_bigdata_mm9_onlyTE.bed') as f:
+with open('data/data_3_bigdata_mm9_onlyTE.bed') as f:
     reader = csv.reader(f, delimiter='\t')
     TE = [row for row in reader]
     
@@ -40,10 +40,10 @@ for j in range(len(cl)):
     for i in range(len(TE)):
         if TE[i][-1].split('/')[0]==str(cl[j]):
             tereg.append([TE[i][0],int(TE[i][1]),int(TE[i][2])])
-    with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/TE_merge_'+str(cl[j])+'.bed','w') as file:
+    with open('out/TE_merge_'+str(cl[j])+'.bed','w') as file:
         writer = csv.writer(file,delimiter='\t')
         writer.writerows(tereg)
-a = pybedtools.example_bedtool('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/TE_merge_'+str(cl[j])+'.bed')
+a = pybedtools.example_bedtool('out/TE_merge_'+str(cl[j])+'.bed')
 b=a.sort()
 c = b.merge()
 reg=0
@@ -58,17 +58,17 @@ g_reg[j]=reg
 cl=['LINE','SINE','LTR','DNA','Unknown']
 ans=[0,0,0,0,0]
 for j in range(len(cl)):
-    with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/TF_chipatlas_Neurod2_merge_TE.bed') as f:
+    with open('out/TF_chipatlas_Neurod2_merge_TE.bed') as f:
         reader = csv.reader(f, delimiter='\t')
         TEATAC = [row for row in reader]
     tereg=[]
     for i in range(len(TEATAC)):
         if TEATAC[i][-1].split('/')[0]==str(cl[j]):
             tereg.append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
-    with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/TF_chipatlas_Neurod2_merge_'+str(cl[j])+'.bed','w') as file:#TF_chipatlas_alltissue_Tbr1.bed:Chip-atlasから取得
+    with open('out/TF_chipatlas_Neurod2_merge_'+str(cl[j])+'.bed','w') as file:#TF_chipatlas_alltissue_Tbr1.bed:Chip-atlasから取得
         writer = csv.writer(file,delimiter='\t')
         writer.writerows(tereg)
-    a = pybedtools.example_bedtool('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/TF_chipatlas_Neurod2_merge_'+str(cl[j])+'.bed')
+    a = pybedtools.example_bedtool('out/TF_chipatlas_Neurod2_merge_'+str(cl[j])+'.bed')
     b=a.sort()
     c = b.merge()
     reg=0
@@ -85,17 +85,17 @@ de1reg=ans
 cl=['LINE','SINE','LTR','DNA','Unknown']
 ans=[0,0,0,0,0]
 for j in range(len(cl)):
-    with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/TF_chipatlas_Lhx2_merge_TE.bed') as f:
+    with open('out/TF_chipatlas_Lhx2_merge_TE.bed') as f:
         reader = csv.reader(f, delimiter='\t')
         TEATAC = [row for row in reader]
     tereg=[]
     for i in range(len(TEATAC)):
         if TEATAC[i][-1].split('/')[0]==str(cl[j]):
             tereg.append([TEATAC[i][0],max(int(TEATAC[i][1]),int(TEATAC[i][4])),min(int(TEATAC[i][2]),int(TEATAC[i][5]))])
-    with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/TF_chipatlas_Lhx2_merge_'+str(cl[j])+'.bed','w') as file:#TF_chipatlas_alltissue_Tbr1.bed:Chip-atlasから取得
+    with open('out/TF_chipatlas_Lhx2_merge_'+str(cl[j])+'.bed','w') as file:#TF_chipatlas_alltissue_Tbr1.bed:Chip-atlasから取得
         writer = csv.writer(file,delimiter='\t')
         writer.writerows(tereg)
-    a = pybedtools.example_bedtool('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/TF_chipatlas_Lhx2_merge_'+str(cl[j])+'.bed')
+    a = pybedtools.example_bedtool('out/TF_chipatlas_Lhx2_merge_'+str(cl[j])+'.bed')
     b=a.sort()
     c = b.merge()
     reg=0
@@ -155,26 +155,10 @@ plt.show()
 
 ## ATAC-seq peak
 
-with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/chromVAR/merged_cortex_500bp_TE.bed') as f:
+with open('data/merged_cortex_500bp_TE.bed') as f:
     reader = csv.reader(f, delimiter='\t')
     TEATAC = [row for row in reader]
 
-
-
-
-
-tereg=[0,0,0,0,0]
-for i in range(len(TEATAC)):
-    if TEATAC[i][-1].split('/')[0]=='LINE':
-        tereg[0]+=min(int(TEATAC[i][2]),int(TEATAC[i][6]))-max(int(TEATAC[i][1]),int(TEATAC[i][5]))
-    elif TEATAC[i][-1].split('/')[0]=='SINE':
-        tereg[1]+=min(int(TEATAC[i][2]),int(TEATAC[i][6]))-max(int(TEATAC[i][1]),int(TEATAC[i][5]))
-    elif TEATAC[i][-1].split('/')[0]=='LTR':
-        tereg[2]+=min(int(TEATAC[i][2]),int(TEATAC[i][6]))-max(int(TEATAC[i][1]),int(TEATAC[i][5]))
-    elif TEATAC[i][-1].split('/')[0]=='DNA':
-        tereg[3]+=min(int(TEATAC[i][2]),int(TEATAC[i][6]))-max(int(TEATAC[i][1]),int(TEATAC[i][5]))
-    else:
-        tereg[4]+=min(int(TEATAC[i][2]),int(TEATAC[i][6]))-max(int(TEATAC[i][1]),int(TEATAC[i][5]))                                                    
 
 
 
@@ -204,7 +188,7 @@ tereg=leng
 
 
 
-with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/chromVAR/denovo_1_motif_pos_TEsubfamily_ATAC.bed') as f:
+with open('out/denovo_1_motif_pos_TEsubfamily_ATAC.bed') as f:
     reader = csv.reader(f, delimiter='\t')
     motifTE = [row for row in reader]
 
@@ -222,7 +206,7 @@ for i in range(len(cl)):
 de1reg=leng
 
 
-with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/chromVAR/denovo_2_motif_pos_TEsubfamily_ATAC.bed') as f:
+with open('out/denovo_2_motif_pos_TEsubfamily_ATAC.bed') as f:
     reader = csv.reader(f, delimiter='\t')
     motifTE = [row for row in reader]
 
@@ -240,7 +224,7 @@ for i in range(len(cl)):
 de2reg=leng
 
 
-with open('/Users/kotaro-sekine/python/ATACatlas_cluster/only_cortex/chromVAR/denovo_3_motif_pos_TEsubfamily_ATAC.bed') as f:
+with open('out/denovo_3_motif_pos_TEsubfamily_ATAC.bed') as f:
     reader = csv.reader(f, delimiter='\t')
     motifTE = [row for row in reader]
 
