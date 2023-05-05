@@ -93,9 +93,14 @@ Details can be found in [2.2.STREAM_scATAC-seq_k-mers.ipynb](https://github.com/
 
 ### Specific TE subfamilies are enriched in the accessible de novo motifs and transcription factor binding sites.
 
-- Distribution of the percentage of ATAC peaks that overlap with TEs for each cell belonging to the cell type (Figure 4)
+- Distribution of the percentage of ATAC peaks that overlap with TEs for each cell belonging to the cell type (Figure 4a,b)
 ```
 $ bash TE_ATAC_rate.sh
+```
+
+- Distribution of classes of the TE that resides in transcription factor binding sites or ATAC-seq peaks (Figure 4c,d)
+```
+$ bash Distribution_of_classes_of_the_TE.sh
 ```
 
 - Enrichment scores of the transcription factor ChIP peaks / Enrichment scores of the accessible motifs (Figure 5a) 
