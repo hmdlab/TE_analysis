@@ -14,8 +14,8 @@ with open('data/mm9.fa.out') as f:
 ans=[]
 for i in range(3,len(TE)):
     c=[a for a in TE[i] if a != '']
-    if ch.count(c[i][4])>0 and nonTE.count(c[i][-5])==0:
-        ans.append([c[i][4],c[i][5],c[i][6],c[i][-6],c[i][-5]])
+    if ch.count(c[4])>0 and nonTE.count(c[-5])==0:
+        ans.append([c[4],c[5],c[6],c[-6],c[-5]])
 
 with open('data/data_3_bigdata_mm9_onlyTE.bed','w') as file:
     writer = csv.writer(file,delimiter='\t')
@@ -33,7 +33,7 @@ for i in range(len(align)):
 ref=[]
 for i in range(len(align)):
     c=[a for a in align[i] if a != '']
-    if ch.count(c[4])>0 and nonTE.count(c[i][-4])==0:
+    if ch.count(c[4])>0 and nonTE.count(c[-4])==0:
         ref.append([c[4],c[5],c[6],c[-5],c[-4],c[-3],c[-2],c[-1],c[2],c[3],i])
 with open('data/mm9.fa.align_map_onlyTE.bed','w') as file:
     writer = csv.writer(file,delimiter='\t')
