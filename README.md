@@ -45,7 +45,7 @@ $ macs2 callpeak -t data/PreFrontalCortex_62216_RG_reheader_Astrocytes.bam \
 -f BAM --nomodel --keep-dup all --extsize 200 --shift -100 -g mm -n PreFrontalCortex_62216_RG_reheader_Astrocytes \
 -B --outdir macs2
 $ deactivate
-$ cat data/macs2/PreFrontalCortex_62216_RG_Astrocytes_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_Ex._neurons_CPN_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_Ex._neurons_CThPN_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_Ex._neurons_SCPN_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_Inhibitory_neurons_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_Microglia_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_Oligodendrocytes_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_SOM+_Interneurons_peaks.narrowPeak | sort -k1,1 -k2,2n | bedtools merge -i - > data/macs2/merged_cortex.bed
+$ cat data/macs2/PreFrontalCortex_62216_RG_reheader_Astrocytes_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_reheader_Ex._neurons_CPN_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_reheader_Ex._neurons_CThPN_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_reheader_Ex._neurons_SCPN_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_reheader_Inhibitory_neurons_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_reheader_Microglia_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_reheader_Oligodendrocytes_peaks.narrowPeak data/macs2/PreFrontalCortex_62216_RG_reheader_SOM+_Interneurons_peaks.narrowPeak | sort -k1,1 -k2,2n | bedtools merge -i - > data/macs2/merged_cortex.bed
 
 # TE(.out)
 $ cd data
