@@ -33,8 +33,9 @@ for i in range(len(align)):
 ref=[]
 for i in range(len(align)):
     c=[a for a in align[i] if a != '']
-    if ch.count(c[4])>0 and nonTE.count(c[-4])==0:
-        ref.append([c[4],c[5],c[6],c[-5],c[-4],c[-3],c[-2],c[-1],c[2],c[3],i])
+    if len(c)>6:
+        if ch.count(c[4])>0 and nonTE.count(c[-4])==0:
+            ref.append([c[4],c[5],c[6],c[-5],c[-4],c[-3],c[-2],c[-1],c[2],c[3],i])
 with open('data/mm9.fa.align_map_onlyTE.bed','w') as file:
     writer = csv.writer(file,delimiter='\t')
     writer.writerows(ref)   
