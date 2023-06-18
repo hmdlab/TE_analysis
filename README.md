@@ -77,6 +77,10 @@ $ python3 TE_bedmake.py
 - Visualization of the accessibility of the seed k-mer used to generate the de novo motif with chromVAR (Figure 2b)
 - Generating de novo motifs based on the k-mers with large accessibility variation across the cells with chromVAR (Figure 2c)
 ```
+$ cd data
+$ wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M1/NCBIM37.genome.fa.gz
+$ unzip NCBIM37.genome.fa.gz
+$ cd ..
 $ r chromVAR_def_1.r
 ```
 
