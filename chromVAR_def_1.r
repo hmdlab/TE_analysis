@@ -53,7 +53,7 @@ fragment_counts_del<-fragment_counts[, fragment_counts@colData@rownames %in% nam
 rm(fragment_counts)
 gc(reset = TRUE)
 gc(reset = TRUE)
-filepath <- ".fa"
+filepath <- "data/NCBIM37.genome.fa"
 fasta <- readDNAStringSet(filepath, format = "fasta")
 
 fragment_counts_del <- addGCBias(fragment_counts_del,genome=fasta)
