@@ -11,7 +11,7 @@ metadata <- read.table('data/metadata_cortex_blank_del.tsv',
                        stringsAsFactors=FALSE,quote="\t",row.names=1)#cell_label
 
 #k-mer(scATAC-seq)
-counts_filtered_peaks_kmers_500bp<-readRDS("out/Cortex_7mers_allgenome_zscore_500bp.rds")
+counts_filtered_peaks_kmers_500bp<-readRDS("out/counts_filtered_peaks_kmers_500bp.rds")
 # RDS(Allen,scRNA-seq)
 pbmc.rna <- readRDS("data/allen_cortex.rds")
 
