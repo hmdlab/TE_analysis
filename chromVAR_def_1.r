@@ -72,6 +72,7 @@ kmer_ix_a <- matchKmers(7, counts_filtered,genome=fasta)
 dev_a <- computeDeviations(object = counts_filtered, annotations = kmer_ix_a,
                          background_peaks = bg)
 
+saveRDS(kmer_ix_a, file = 'out/counts_filtered_peaks_kmers_500bp.rds')
 saveRDS(dev_a, file = 'out/Cortex_7mers_allgenome_zscore_500bp.rds')
 
 #tSNE
